@@ -1,0 +1,16 @@
+services:
+  payment-service:
+    image: ${NEXUS_REPO_URL_DOCKER}/fox-docker-repo/donatehelper-payment-service:${VERSION}
+    container_name: donatehelper-payment-service-${CONTAINER_PREFIX}
+    ports:
+      - "9003:8000"
+    env_file:
+      - .env
+    networks:
+      - network-donatehelper
+    restart: always
+    volumes:
+      - ./storage:/storage
+networks:
+  network-donatehelper:
+    name: network-donatehelper

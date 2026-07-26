@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "9003:8000"
+    env_file:
+      - .dev_env
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/.venv
+      - ./storage:/storage
